@@ -28,3 +28,31 @@ def main():
 
 if __name__ == "__main__":
     main()
+import requests
+import os
+import time
+
+# أضف مفتاح الـ API الخاص بـ Adsterra من لوحة التحكم (Profile > API)
+ADSTERRA_API_KEY = os.environ.get("ADSTERRA_API_KEY", "YOUR_API_KEY_HERE")
+
+def check_balance():
+    url = "https://publishers.adsterra.com/api/v1/publisher/balance"
+    headers = {"Authorization": f"Bearer {ADSTERRA_API_KEY}"}
+
+    try:
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            data = response.json()
+            balance = data.get("balance", "0.00")
+            print(f"[+] الرصيد الحالي في Adsterra: ${balance}")
+        else:
+            print("[-] تعذر جلب الرصيد، تحقق من مفتاح API")
+    except Exception as e:
+        print(f"[-] خطأ أثناء الاتصال: {e}")
+
+if __name__ == "__main__":
+    while True:
+        check_balance()
+        time.sleep(3600)  # فحص وتنبيه كل ساعة
+
+

@@ -5,7 +5,6 @@ from datetime import datetime
 def advanced_autonomous_radar():
     print("[*] Adastra Autonomous OS - Advanced Client Radar Running...")
     
-    # محاكاة رصد الشركات والعملاء المستهدفين بذكاء
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     new_lead = {
         "timestamp": timestamp,
@@ -17,10 +16,13 @@ def advanced_autonomous_radar():
     
     pipeline_file = "new_clients_pipeline.json"
     
+    # قراءة البيانات وضمان أنها قائمة (List) وليست قاموساً (Dict)
     if os.path.exists(pipeline_file):
         with open(pipeline_file, "r") as f:
             try:
                 pipeline_data = json.load(f)
+                if not isinstance(pipeline_data, list):
+                    pipeline_data = [pipeline_data]
             except json.JSONDecodeError:
                 pipeline_data = []
     else:

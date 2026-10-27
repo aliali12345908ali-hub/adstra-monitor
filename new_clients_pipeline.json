@@ -30,5 +30,12 @@
         "status": "Qualified",
         "potential_value": "$5,000/mo",
         "action_taken": "Automated funnel sequence triggered."
+    },
+    {
+        "timestamp": "2026-10-27 19:48:46",
+        "lead_id": "ADASTRA-LEAD-992",
+        "status": "Qualified",
+        "potential_value": "$5,000/mo",
+        "action_taken": "Automated funnel sequence triggered."
     }
 ]

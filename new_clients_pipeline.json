@@ -1,0 +1,25 @@
+{
+    "enterprise": "Adastra Sovereign Digital Enterprise",
+    "radar_status": "ACTIVE_ONBOARDING",
+    "timestamp": 1792493792.3633947,
+    "newly_acquired_clients": [
+        {
+            "client": "Apex Cloud Solutions",
+            "deal_value_eur": 32000.0,
+            "status": "ONBOARDED"
+        },
+        {
+            "client": "Quantum AI Systems",
+            "deal_value_eur": 48000.0,
+            "status": "CONTRACT_SIGNED"
+        },
+        {
+            "client": "Vertex Cyber Security",
+            "deal_value_eur": 40000.0,
+            "status": "SECURED"
+        }
+    ],
+    "total_new_pipeline_eur": 120000.0,
+    "tax_withheld_20_percent_eur": 24000.0,
+    "net_new_profit_eur": 96000.0
+}

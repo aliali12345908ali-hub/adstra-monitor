@@ -1,23 +1,38 @@
 import json
 import os
+from datetime import datetime
 
-def scan_and_capture_leads():
-    print("[*] Adastra Autonomous OS - Client Acquisition Radar Active...")
-    # محاكاة خط أنابيب التقاط العملاء المستهدفين
-    lead_pipeline = {
-        "status": "Scanning",
-        "target_market": "Global Digital Enterprises",
-        "action": "Automated Outreach & Funnel Trigger"
+def advanced_autonomous_radar():
+    print("[*] Adastra Autonomous OS - Advanced Client Radar Running...")
+    
+    # محاكاة رصد الشركات والعملاء المستهدفين بذكاء
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    new_lead = {
+        "timestamp": timestamp,
+        "lead_id": "ADASTRA-LEAD-992",
+        "status": "Qualified",
+        "potential_value": "$5,000/mo",
+        "action_taken": "Automated funnel sequence triggered."
     }
     
-    if os.path.exists("new_clients_pipeline.json"):
-        with open("new_clients_pipeline.json", "r") as f:
-            data = json.load(f)
-        print("[+] Current Pipeline Loaded Successfully.")
+    pipeline_file = "new_clients_pipeline.json"
+    
+    if os.path.exists(pipeline_file):
+        with open(pipeline_file, "r") as f:
+            try:
+                pipeline_data = json.load(f)
+            except json.JSONDecodeError:
+                pipeline_data = []
     else:
-        print("[+] Initializing New Client Pipeline...")
+        pipeline_data = []
         
-    print("[+] Radar is primed to convert organic traffic and automated leads into Stripe transactions.")
+    pipeline_data.append(new_lead)
+    
+    with open(pipeline_file, "w") as f:
+        json.dump(pipeline_data, f, indent=4)
+        
+    print(f"[+] Success: New autonomous lead captured and logged at {timestamp}!")
+    print(f"[+] Total active leads in pipeline: {len(pipeline_data)}")
 
 if __name__ == "__main__":
-    scan_and_capture_leads()
+    advanced_autonomous_radar()

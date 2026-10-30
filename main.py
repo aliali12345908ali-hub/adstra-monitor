@@ -4,26 +4,15 @@ import json
 
 class DirectPaymentHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        if self.path == '/health':
-            self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.end_headers()
-            response = {"status": "healthy", "mode": "Direct Payout to Personal Account"}
-            self.wfile.write(json.dumps(response).encode('utf-8'))
-        elif self.path == '/':
-            self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.end_headers()
-            response = {
-                "enterprise": "Adastra Sovereign",
-                "status": "Running",
-                "payment_gateway": "Direct Account Transfer (Stripe Removed)"
-            }
-            self.wfile.write(json.dumps(response).encode('utf-8'))
-        else:
-            self.send_response(404)
-            self.end_headers()
-            self.wfile.write(b"404 Not Found")
+        self.send_response(200)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        response = {
+            "status": "success",
+            "message": "Adastra Sovereign Direct Payout System Active",
+            "payment": "Direct to Personal Account (Stripe Removed)"
+        }
+        self.wfile.write(json.dumps(response).encode('utf-8'))
 
 def run(server_class=HTTPServer, handler_class=DirectPaymentHandler, port=8080):
     port_env = int(os.environ.get("PORT", port))
@@ -34,6 +23,5 @@ def run(server_class=HTTPServer, handler_class=DirectPaymentHandler, port=8080):
 
 if __name__ == '__main__':
     run()
-
 
 
